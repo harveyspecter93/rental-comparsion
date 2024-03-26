@@ -7,11 +7,11 @@ describe('calculateUtilityAnalysis', () => {
       { criteria: 'cost', weight: '25' },
       { criteria: 'trustworthiness', weight: '25' },
     ];
-    const crowdfundingProviderData = [
+    const rentalProviderData = [
       { reach: 10, cost: 5, trustworthiness: 7 },
       { reach: 8, cost: 6, trustworthiness: 9 },
     ];
-    const result = calculateUtilityAnalysis(params, crowdfundingProviderData);
+    const result = calculateUtilityAnalysis(params, rentalProviderData);
     expect(result[0].score).toBe('8.00');
     expect(result[1].score).toBe('7.75');
   });

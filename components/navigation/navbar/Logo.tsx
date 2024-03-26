@@ -23,7 +23,7 @@ const Logo = () => {
   return (
     <>
       <Link href="/">
-        <p className="text-2xl text-cr-darkgrey">Crowdfunding-Comparison</p>
+        <p className="text-2xl text-cr-darkgrey">Rental-Comparison</p>
       </Link>
     </>
   );

@@ -3,11 +3,11 @@ import { useState } from 'react';
 import { calculateUtilityAnalysis } from '../utils/utilityAnalysis/calculation';
 import { checkForm } from '../utils/utilityAnalysis/checkForm';
 import { sortList } from '../utils/utilityAnalysis/sortList';
-import CrowdfuningProviderOverview from './CrowdfuningProviderOverview';
+import RentalProviderOverview from './RentalProviderOverview';
 
-const UtilityAnalysisInteraction = ({ crowdfundingProviderData }: { crowdfundingProviderData: any }) => {
+const UtilityAnalysisInteraction = ({ rentalProvider }: { rentalProvider: any }) => {
 
-  const [ratedCrowdFundingProvider, setRatedCrowdFundingProvider] = useState<any[]>([]);
+  const [ratedRentalProvider, setRatedRentalProvider] = useState<any[]>([]);
   const [params, setParams] = useState([
     { id: 1, weight: '', criteria: '' },
     { id: 2, weight: '', criteria: '' },
@@ -30,8 +30,8 @@ const UtilityAnalysisInteraction = ({ crowdfundingProviderData }: { crowdfunding
     const correctForm = checkForm(params);
     if (correctForm === true) {
       //calculates the utility analysis and sorts the list 
-      const ratedCrowdFundingProviderList = sortList(calculateUtilityAnalysis(params, crowdfundingProviderData));
-      setRatedCrowdFundingProvider(ratedCrowdFundingProviderList);
+      const ratedRentalProviderList = sortList(calculateUtilityAnalysis(params, rentalProvider));
+      setRatedRentalProvider(ratedRentalProviderList);
     } else {
       //alerts the user with the specific error message
       alert(correctForm);
@@ -40,7 +40,7 @@ const UtilityAnalysisInteraction = ({ crowdfundingProviderData }: { crowdfunding
 
   const deleteList = () => {
     // reset the list and the params
-    setRatedCrowdFundingProvider([]);
+    setRatedRentalProvider([]);
     setParams([
       { id: 1, weight: '', criteria: '' },
       { id: 2, weight: '', criteria: '' },
@@ -51,7 +51,7 @@ const UtilityAnalysisInteraction = ({ crowdfundingProviderData }: { crowdfunding
   return (
     <div>
 
-      {ratedCrowdFundingProvider.length === 0 ? (
+      {ratedRentalProvider.length === 0 ? (
         <div>
           <div className="mb-5">
             <h2 className="text-2xl font-semibold leading-tight mb-2">
@@ -62,7 +62,7 @@ const UtilityAnalysisInteraction = ({ crowdfundingProviderData }: { crowdfunding
             Bitte wählen Sie Kriterien, die für die Nutzwertanalyse verwendet
             werden sollen aus. <br />
             Die Kriterien müssen einzeln Gewichtet werden. Dabei ist zu
-            beachtenm, dass die Summe am Ende 100% ergeben muss
+            beachten, dass die Summe am Ende 100% ergeben muss
           </p>
           <form action="">
             <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
@@ -154,7 +154,7 @@ const UtilityAnalysisInteraction = ({ crowdfundingProviderData }: { crowdfunding
             onClick={deleteList}
             className="bg-gray-700 text-white font-bold py-2 px-4 rounded mt-4"
           >Neu ausrechnen</button>
-          <CrowdfuningProviderOverview crowdfundingProvider={ratedCrowdFundingProvider} ></CrowdfuningProviderOverview>
+          <RentalProviderOverview rentalProvider={ratedRentalProvider} ></RentalProviderOverview>
         </>
       )}
     </div>

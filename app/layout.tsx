@@ -7,9 +7,9 @@ const defaultUrl = process.env.VERCEL_URL
   : 'http://localhost:3000'
 
 export const metadata = {
-  metadataBase: new URL(defaultUrl),
-  title: 'Crowdfunding Utility Analysis',
-  description: 'Crowdfunding Utility Analysis - A tool to compare crowdfunding providers'
+  // metadataBase: new URL(defaultUrl),
+  title: 'Rental Utility Analysis',
+  description: 'Rental Utility Analysis - A tool to compare rental providers'
 }
 
 export default function RootLayout({
