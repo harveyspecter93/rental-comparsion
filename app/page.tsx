@@ -10,8 +10,7 @@ export default async function Index() {
 
     return (
         <>
-        <RentalProviderOverview rentalProvider={rentalProvider} />
+        <RentalProviderOverview rentalProvider={rentalProvider || []} />
         </>
-        
     )
 }
