@@ -1,16 +1,19 @@
-
 import ModalContent from "./ModalContent";
 import exp from "constants";
 
 const Modal = ({ selectedProvider, onClose }: { selectedProvider: Provider; onClose: () => void }) => (
-<>
-    <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center overflow-y-auto p-4">
-    <div className="bg-white p-4 rounded-lg shadow-lg max-w-md w-full mx-auto my-8">
-        <ModalContent selectedProvider={selectedProvider} onClose={onClose} />
-        <button className="absolute top-0 right-0 m-4 text-3xl font-semibold" onClick={onClose}>×</button>
+    // Outer container with fixed positioning to cover the whole screen
+    <div className="fixed inset-0 z-50 overflow-y-auto">
+        {/* Backdrop with opacity for shadowing the content behind */}
+        <div className="absolute inset-0 bg-black bg-opacity-50" onClick={onClose}></div>
+        {/* Centering the modal content */}
+        <div className="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center">
+            <div className="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+                <ModalContent selectedProvider={selectedProvider} onClose={onClose} />
+                <button className="absolute top-0 right-0 m-4 text-3xl font-semibold" onClick={onClose}>×</button>
+            </div>
+        </div>
     </div>
-    </div>
-</>
 );
 
-export default Modal;  
+export default Modal;
