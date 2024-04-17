@@ -1,5 +1,4 @@
 
-import Provider from "@/interfaces/types";
 import ModalContent from "./ModalContent";
 import exp from "constants";
 

@@ -1,4 +1,3 @@
-import Provider from "@/interfaces/types";
 import Button from "./Button";
 
 interface ModalContentProps {

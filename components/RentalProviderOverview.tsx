@@ -2,7 +2,6 @@
 import React, { useState, useCallback } from 'react';
 import ProviderCard from './ProviderCard';
 import Modal from './Modal';
-import Provider from '@/interfaces/types';
 
 const RentalProviderOverview = ({ rentalProvider }: { rentalProvider: Provider[] }) => {
     const [showModal, setShowModal] = useState(false);

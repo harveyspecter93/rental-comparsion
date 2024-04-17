@@ -1,5 +1,4 @@
 import React from 'react';
-import Provider from "@/interfaces/types";
 
 const ProviderCard = ({ provider, onClick }: { provider: Provider; onClick: () => void }) => (
     <div className="w-full md:w-1/2 lg:w-1/3 p-1 lg:p-4">
