@@ -9,20 +9,19 @@ const UtilityAnalysisInteraction = ({ rentalProvider }: { rentalProvider: any })
 
   const [ratedRentalProvider, setRatedRentalProvider] = useState<any[]>([]);
   const [params, setParams] = useState([
-    { id: 1, weight: '', criteria: '' },
-    { id: 2, weight: '', criteria: '' },
-    { id: 3, weight: '', criteria: '' },
+    { weight: '', criteria: 'productRange', label: 'Vielfalt der Unterkunftstypen' },
+    { weight: '', criteria: 'globalAvailability', label: 'Globale Verfügbarkeit' },
+    { weight: '', criteria: 'priceCompetitiveness', label: 'Wettbewerbsfähigkeit der Preise' },
+    { weight: '', criteria: 'discountAvailability', label: 'Rabattverfügbarkeit' },
+    { weight: '', criteria: 'averageRatings', label: 'Durchschnittliche Gästebewertungen' },
+    { weight: '', criteria: 'reviewCount', label: 'Anzahl der Bewertungen' },
+    { weight: '', criteria: 'hostFeeStructure', label: 'Gebührenstruktur und Transparenz für Gastgeber' },
+    { weight: '', criteria: 'hostInsurance', label: 'Versicherungspolicen und Schutz für Gastgeber' }
   ]);
 
   const handleTitleChange = (index: any, newWeight: any) => {
-    const updatedParams = [...params];
+    let updatedParams = [...params];
     updatedParams[index].weight = newWeight;
-    setParams(updatedParams);
-  };
-
-  const handleContentChange = (index: any, newCriteria: any) => {
-    const updatedParams = [...params];
-    updatedParams[index].criteria = newCriteria;
     setParams(updatedParams);
   };
 
@@ -42,9 +41,14 @@ const UtilityAnalysisInteraction = ({ rentalProvider }: { rentalProvider: any })
     // reset the list and the params
     setRatedRentalProvider([]);
     setParams([
-      { id: 1, weight: '', criteria: '' },
-      { id: 2, weight: '', criteria: '' },
-      { id: 3, weight: '', criteria: '' },
+      { weight: '', criteria: 'productRange', label: 'Vielfalt der Unterkunftstypen' },
+      { weight: '', criteria: 'globalAvailability', label: 'Globale Verfügbarkeit' },
+      { weight: '', criteria: 'priceCompetitiveness', label: 'Wettbewerbsfähigkeit der Preise' },
+      { weight: '', criteria: 'discountAvailability', label: 'Rabattverfügbarkeit' },
+      { weight: '', criteria: 'averageRatings', label: 'Durchschnittliche Gästebewertungen' },
+      { weight: '', criteria: 'reviewCount', label: 'Anzahl der Bewertungen' },
+      { weight: '', criteria: 'hostFeeStructure', label: 'Gebührenstruktur und Transparenz für Gastgeber' },
+      { weight: '', criteria: 'hostInsurance', label: 'Versicherungspolicen und Schutz für Gastgeber' }
     ]);
   };
 
@@ -62,16 +66,18 @@ const UtilityAnalysisInteraction = ({ rentalProvider }: { rentalProvider: any })
             Bitte wählen Sie Kriterien, die für die Nutzwertanalyse verwendet
             werden sollen aus. <br />
             Die Kriterien müssen einzeln Gewichtet werden. Dabei ist zu
-            beachten, dass die Summe am Ende 100% ergeben muss
+            beachten, dass die Summe am Ende 100% ergeben muss. <br />
+            <i>Falls ein Kriterium irrelevant ist, lassen Sie das Feld leer.</i>
           </p>
+
           <form action="">
-            <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
+            <div className="-mx-4 sm:-mx-8 px-10 sm:px-8 py-4 overflow-x-auto">
               <div className="inline-block min-w-full shadow rounded-lg overflow-hidden">
                 <table className="min-w-full leading-normal">
                   <thead>
                     <tr>
                       <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                        <div className="flex-shrink-0 w-10 h-10">
+                        <div className="flex-shrink-0 w-10 h-10 mb-3">
                           <img
                             className="w-full h-full"
                             src="https://cdn-icons-png.flaticon.com/512/6404/6404370.png"
@@ -80,15 +86,15 @@ const UtilityAnalysisInteraction = ({ rentalProvider }: { rentalProvider: any })
                         </div>
                         Kriterien
                       </th>
-                      <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                        <div className="flex-shrink-0 w-10 h-10">
+                      <th className="px-5 py-5 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                        <div className="flex-shrink-0 w-10 h-10 mb-3">
                           <img
                             className="w-full h-full"
-                            src="   https://cdn-icons-png.flaticon.com/512/847/847345.png"
+                            src="https://cdn-icons-png.flaticon.com/512/847/847345.png"
                             alt=""
                           />
                         </div>
-                        Gewichtung - total max 100%
+                        Gewichtung - total max. 100%
                       </th>
                     </tr>
                   </thead>
@@ -97,9 +103,9 @@ const UtilityAnalysisInteraction = ({ rentalProvider }: { rentalProvider: any })
                     {params.map((param, index) => (
                       <tr key={index}>
                         <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                          <div className="flex items-center">
-                            <div className="relative">
-                              <select
+                          <div className="flex items-center flex-row">
+                            
+                              {/* <select
                                 className="h-full rounded-r border-t sm:rounded-r-none sm:border-r-0 border-r border-b block appearance-none w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:border-l focus:border-r focus:bg-white focus:border-gray-500"
                                 value={param.criteria === '' ? '' : param.criteria}
                                 onChange={(e) => handleContentChange(index, e.target.value)}
@@ -111,17 +117,9 @@ const UtilityAnalysisInteraction = ({ rentalProvider }: { rentalProvider: any })
                                 <option value="reach">Reichweite</option>
                                 <option value="cost">Kosten</option>
                                 <option value="trustworthiness">Vertrauenswürdigkeit</option>
-                              </select>
-                              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                                <svg
-                                  className="fill-current h-4 w-4"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  viewBox="0 0 20 20"
-                                >
-                                  <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-                                </svg>
-                              </div>
-                            </div>
+                              </select>  */}
+
+                              <p className="ml-2">{param.label}</p>
                           </div>
                         </td>
                         <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">

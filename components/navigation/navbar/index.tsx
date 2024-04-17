@@ -1,43 +1,34 @@
 import React from "react";
-import Link from "next/link";
 import Logo from "./Logo";
-import Button from "./Button";
+import Button from "@/components/Button";
 
 const Navbar = ({ toggle }: { toggle: () => void }) => {
   return (
-    <>
-      <div className="w-full h-20 bg-white sticky top-0 shadow-md">
-        <div className="container mx-auto px-4 h-full">
-          <div className="flex justify-between items-center h-full">
-            <Logo />
-            <button
-              type="button"
-              className="inline-flex items-center md:hidden"
-              onClick={toggle}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="40"
-                height="40"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  fill="#313638"
-                  d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"
-                />
-              </svg>
-            </button>
-            <ul className="hidden md:flex gap-x-20 text-cr-darkgrey ">
-              <li>
-                <Link href="/utility-analysis">
-                  <p>Nutzwertanalyse</p>
-                </Link>
-              </li>
-            </ul>
-          </div>
-        </div>
+    <header className="w-full h-20 bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 text-white sticky top-0 shadow-lg">
+      <div className="container mx-auto px-4 h-full">
+        <nav className="flex justify-between items-center h-full">
+          <Logo />
+          <button
+            className="md:hidden flex items-center p-2"
+            onClick={toggle}
+            aria-label="Open Menu"
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path fillRule="evenodd" clipRule="evenodd" d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z" fill="#FFFFFF"/>
+            </svg>
+          </button>
+          <ul className="hidden md:flex items-center gap-x-20">
+            <li>
+                <Button onClick={() => {
+                  window.location.href = "/utility-analysis";
+                }}>
+                  Nutzwertanalyse
+                </Button>
+            </li>
+          </ul>
+        </nav>
       </div>
-    </>
+    </header>
   );
 };
 

@@ -33,8 +33,11 @@ const Sidebar = ({
 
         <ul className="sidebar-nav text-center leading-relaxed text-xl">
           <li>
+            
             <Link href="/utility-analysis" onClick={toggle}>
-              <p>Nutzwertanalyse</p>
+            <button
+            className="bg-gray-700 text-white font-bold py-2 px-4 rounded mt-4"
+          >Nutzwertanalyse</button>
             </Link>
           </li>
         </ul>

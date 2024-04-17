@@ -2,7 +2,6 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import Button from "./Button";
 
 const Logo = () => {
   //update the size of the logo when the size of the screen changes
@@ -23,7 +22,7 @@ const Logo = () => {
   return (
     <>
       <Link href="/">
-        <p className="text-2xl text-cr-darkgrey">Rental-Comparison</p>
+        <p className="text-2xl text-white">Rental-Comparison</p>
       </Link>
     </>
   );

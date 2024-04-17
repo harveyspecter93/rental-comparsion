@@ -1,4 +1,4 @@
-import UtilityAnalysisInteraction from "../../components/UtilityAnalysisInteraction";
+import UtilityAnalysisInteraction from "@/components/UtilityAnalysisInteraction";
 import { createClient } from '@/utils/supabase/server';
 import { cookies } from 'next/headers';
 

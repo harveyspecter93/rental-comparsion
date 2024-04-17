@@ -1,11 +1,16 @@
 export const calculateUtilityAnalysis = (params: any, rentalProviderData: any) => {
   rentalProviderData.map((provider: any, index: number) => {
-    const scoreReach = (provider.reach / 100) * Number(params.find((param: { criteria: string; }) => param.criteria === 'reach')?.weight);
-    const scoreCosts = (provider.cost / 100) * Number(params.find((param: { criteria: string; }) => param.criteria === 'cost')?.weight);
-    const scoreTrustworthiness = (provider.trustworthiness / 100) * Number(params.find((param: { criteria: string; }) => param.criteria === 'trustworthiness')?.weight);
+    const scoreProductRange = (provider.productRange / 100) * Number(params.find((param: { criteria: string; }) => param.criteria === 'productRange')?.weight);
+    const scoreGlobalAvailability = (provider.globalAvailability / 100) * Number(params.find((param: { criteria: string; }) => param.criteria === 'globalAvailability')?.weight);
+    const scorePriceCompetitiveness = (provider.priceCompetitiveness / 100) * Number(params.find((param: { criteria: string; }) => param.criteria === 'priceCompetitiveness')?.weight);
+    const scoreDiscountAvailability = (provider.discountAvailability / 100) * Number(params.find((param: { criteria: string; }) => param.criteria === 'discountAvailability')?.weight);
+    const scoreAverageRatings = (provider.averageRatings / 100) * Number(params.find((param: { criteria: string; }) => param.criteria === 'averageRatings')?.weight);
+    const scoreReviewCount = (provider.reviewCount / 100) * Number(params.find((param: { criteria: string; }) => param.criteria === 'reviewCount')?.weight);
+    const scoreHostFeeStructure = (provider.hostFeeStructure / 100) * Number(params.find((param: { criteria: string; }) => param.criteria === 'hostFeeStructure')?.weight);
+    const scoreHostInsurance = (provider.hostInsurance / 100) * Number(params.find((param: { criteria: string; }) => param.criteria === 'hostInsurance')?.weight);
 
-    // add new attriute score to provider
-    provider.score = Number(scoreReach + scoreCosts + scoreTrustworthiness).toFixed(2);
+    const totalScore = scoreProductRange + scoreGlobalAvailability + scorePriceCompetitiveness + scoreDiscountAvailability + scoreAverageRatings + scoreReviewCount + scoreHostFeeStructure + scoreHostInsurance;
+    provider.score = totalScore.toFixed(2);
   });
 
   return rentalProviderData;
