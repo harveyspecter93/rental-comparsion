@@ -1,16 +1,13 @@
-
 import RentalProviderOverview from '@/components/RentalProviderOverview';
-import { createClient } from '@/utils/supabase/server'
-import { cookies } from 'next/headers'
+import { RatedProvider } from '@/interfaces/types'; // Import the 'RatedProvider' type
 
-export default async function Index() {
-    const cookieStore = cookies()
-    const supabase = createClient(cookieStore);
-    const { data: rentalProvider } = await supabase.from("rentalProvider").select();
+export default async function Home() {
+    const response = await fetch(`http://localhost:3000/api/rentalProviders`);
+    const providers = await response.json()
 
-    return (
-        <>
-        <RentalProviderOverview rentalProvider={rentalProvider || []} />
-        </>
-    )
-}
+    return <RentalProviderOverview rentalProvider={ providers } />;
+};
+  
+
+
+

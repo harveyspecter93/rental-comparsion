@@ -1,13 +1,9 @@
-import Navigation from "../components/navigation";
+
 import { GeistSans } from 'geist/font/sans'
 import './globals.css'
-
-const defaultUrl = process.env.VERCEL_URL
-  ? `https://${process.env.VERCEL_URL}`
-  : 'http://localhost:3000'
+import Navigation from '@/components/navigation'
 
 export const metadata = {
-  // metadataBase: new URL(defaultUrl),
   title: 'Rental Utility Analysis',
   description: 'Rental Utility Analysis - A tool to compare rental providers'
 }

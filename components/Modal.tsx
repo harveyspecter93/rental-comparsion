@@ -1,7 +1,7 @@
+import { RatedProvider } from "@/interfaces/types";
 import ModalContent from "./ModalContent";
-import exp from "constants";
 
-const Modal = ({ selectedProvider, onClose }: { selectedProvider: Provider; onClose: () => void }) => (
+const Modal = ({ selectedProvider, onClose }: { selectedProvider: RatedProvider; onClose: () => void }) => (
     // Outer container with fixed positioning to cover the whole screen
     <div className="fixed inset-0 z-50 overflow-y-auto">
         {/* Backdrop with opacity for shadowing the content behind */}

@@ -7,7 +7,7 @@ describe('sortList', () => {
       { score: 1 },
       { score: 2 },
     ];
-    const result = sortList(list, 'asc');
+    const result = sortList(list, false);
     expect(result).toEqual([
       { score: 1 },
       { score: 2 },
@@ -21,7 +21,7 @@ describe('sortList', () => {
       { score: 1 },
       { score: 2 },
     ];
-    const result = sortList(list, 'desc');
+    const result = sortList(list, true);
     expect(result).toEqual([
       { score: 3 },
       { score: 2 },
@@ -35,7 +35,7 @@ describe('sortList', () => {
       { score: 1 },
       { score: 2 },
     ];
-    const result = sortList(list, 'desc');
+    const result = sortList(list, true);
     expect(result).toEqual([
       { score: 3 },
       { score: 2 },

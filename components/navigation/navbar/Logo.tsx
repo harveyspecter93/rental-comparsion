@@ -1,30 +1,10 @@
-"use client";
-import Image from "next/image";
-import { useEffect, useState } from "react";
-import Link from "next/link";
+import Link from 'next/link';
 
 const Logo = () => {
-  //update the size of the logo when the size of the screen changes
-  const [width, setWidth] = useState(0);
-
-  const updateWidth = () => {
-    const newWidth = window.innerWidth;
-    setWidth(newWidth);
-  };
-
-  useEffect(() => {
-    window.addEventListener("resize", updateWidth);
-    updateWidth();
-  }, []);
-
-  // change between the logo and the button when the user scrolls
-
   return (
-    <>
-      <Link href="/">
-        <p className="text-2xl text-white">Rental-Comparison</p>
-      </Link>
-    </>
+    <Link href="/" passHref>
+      <span className="text-2xl text-white cursor-pointer">Finde die ideale Mietunterkunft-Plattform für deine Bedürfnisse</span>
+    </Link>
   );
 };
 

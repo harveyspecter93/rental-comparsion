@@ -1,12 +1,7 @@
-export const sortList = (list: any[], way: string = 'desc') => {
-    if (way == 'asc') {
-        list.sort((a, b) => {
-            return a.score - b.score;
-        });
-    } else if (way == 'desc') {
-        list.sort((a, b) => {
-            return b.score - a.score;
-        });
-    }
-    return list
+export const sortList = (list: any[], desc: boolean = true) => {
+    list.sort((a, b) => {
+        return desc ? b.score - a.score : a.score - b.score;
+    });
+    return list;
 };
+

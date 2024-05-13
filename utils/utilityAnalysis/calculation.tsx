@@ -1,17 +1,32 @@
-export const calculateUtilityAnalysis = (params: any, rentalProviderData: any) => {
-  rentalProviderData.map((provider: any, index: number) => {
-    const scoreProductRange = (provider.productRange / 100) * Number(params.find((param: { criteria: string; }) => param.criteria === 'productRange')?.weight);
-    const scoreGlobalAvailability = (provider.globalAvailability / 100) * Number(params.find((param: { criteria: string; }) => param.criteria === 'globalAvailability')?.weight);
-    const scorePriceCompetitiveness = (provider.priceCompetitiveness / 100) * Number(params.find((param: { criteria: string; }) => param.criteria === 'priceCompetitiveness')?.weight);
-    const scoreDiscountAvailability = (provider.discountAvailability / 100) * Number(params.find((param: { criteria: string; }) => param.criteria === 'discountAvailability')?.weight);
-    const scoreAverageRatings = (provider.averageRatings / 100) * Number(params.find((param: { criteria: string; }) => param.criteria === 'averageRatings')?.weight);
-    const scoreReviewCount = (provider.reviewCount / 100) * Number(params.find((param: { criteria: string; }) => param.criteria === 'reviewCount')?.weight);
-    const scoreHostFeeStructure = (provider.hostFeeStructure / 100) * Number(params.find((param: { criteria: string; }) => param.criteria === 'hostFeeStructure')?.weight);
-    const scoreHostInsurance = (provider.hostInsurance / 100) * Number(params.find((param: { criteria: string; }) => param.criteria === 'hostInsurance')?.weight);
+//utils/utilityAnalysis/calculation.tsx
+import { RatedProvider, Criteria } from '@/interfaces/types';
 
-    const totalScore = scoreProductRange + scoreGlobalAvailability + scorePriceCompetitiveness + scoreDiscountAvailability + scoreAverageRatings + scoreReviewCount + scoreHostFeeStructure + scoreHostInsurance;
-    provider.score = totalScore.toFixed(2);
-  });
 
-  return rentalProviderData;
+
+// Normalize weights to sum to 100 for percentage calculation
+const normalizeWeights = (params: Criteria[]): Criteria[] => {
+    const totalWeight = params.reduce((sum, param) => sum + param.weight, 0);
+    return params.map(param => ({
+        ...param,
+        weight: (param.weight / totalWeight) * 100
+    }));
+};
+
+// Calculate the weighted score for each provider
+const calculateScore = (provider: RatedProvider, weightedParams: Criteria[]): number => {
+    return weightedParams.reduce((total, param) => {
+        const value = provider[param.criteria];
+        const score = value * (param.weight / 100);
+        return total + score;
+    }, 0);
+};
+
+// Analyze utilities of rated providers
+export const calculateUtilityAnalysis = (params: Criteria[], providers: RatedProvider[]): RatedProvider[] => {
+    const weightedParams = normalizeWeights(params);
+
+    return providers.map(provider => {
+        provider.score = calculateScore(provider, weightedParams).toFixed(2);
+        return provider;
+    });
 };
