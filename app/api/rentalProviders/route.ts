@@ -1,9 +1,8 @@
-
 import { createClient } from "@/utils/supabase/server";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
-export async function GET(request: Request) {
+export async function GET(request: Request): Promise<NextResponse> {
     
     const cookieStore = cookies()
     const supabase = createClient(cookieStore);
@@ -13,8 +12,15 @@ export async function GET(request: Request) {
         .select('*');
 
     if (error) {
-        return { status: 500, body: { error: 'Fehler beim Abrufen der Daten' } };
+        // Return a NextResponse with a 500 status code and error message
+        return new NextResponse(JSON.stringify({ error: 'Fehler beim Abrufen der Daten' }), {
+            status: 500,
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        });
     }
 
+    // Return data using NextResponse.json which already conforms to Response
     return NextResponse.json(data);
 }
