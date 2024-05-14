@@ -10,10 +10,10 @@ import RentalProviderOverview from './RentalProviderOverview';
 // Utility functions
 import { calculateUtilityAnalysis } from '@/utils/utilityAnalysis/calculation';
 import { sortList } from '@/utils/utilityAnalysis/sortList';
-import { Criteria, CriteriaLabels, NumericProperties } from '@/interfaces/types';
+import { Criteria, CriteriaLabels, NumericProperties, RatedProvider } from '@/interfaces/types';
 
 type Props = {
-  rentalProvider: any; // Consider defining a more specific type
+  rentalProvider: RatedProvider[];
 };
 
 // Initial state constants
@@ -45,6 +45,7 @@ const UtilityAnalysisInteraction: React.FC<Props> = ({ rentalProvider }) => {
     if (checkAtLeastOneWeightGreaterThanZero()) {
       const ratedList = sortList(calculateUtilityAnalysis(params, rentalProvider));
       setRatedRentalProvider(ratedList);
+      window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll to the top smoothly
     }
   };
 
@@ -58,23 +59,23 @@ const UtilityAnalysisInteraction: React.FC<Props> = ({ rentalProvider }) => {
       {ratedRentalProvider.length === 0 ? (
         <div className="mb-5">
           <h2 className="text-2xl font-semibold leading-tight mb-2">Nutzwertanalyse</h2>
-          <p>Bitte gewichten Sie folgende Kriterien anhand Ihren persönlichen Bedürfnissen. <br />
+          <p className="pt-2 pb-4">Bitte gewichten Sie folgende Kriterien anhand Ihren persönlichen Bedürfnissen. <br />
             Die Gewichtung wird entsprechend in die Berechnung der Nutzwertanalyse einfliessen.
           </p>
           <form>
             {/* Parameter table with sliders */}
             <SliderTable params={params} handleSliderChange={handleSliderChange} />
             {errorMessage && (
-              <div className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
+              <div className="p-4 mb-2 mt-2 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
                 {errorMessage}
               </div>
             )}
-            <Button onClick={saveChanges} hasErrors={errorMessage !== ''}>Ausrechnen</Button>
+            <Button onClick={saveChanges}  className="my-4" isDisabled={errorMessage !== ''}>Ausrechnen</Button>
           </form>
         </div>
       ) : (
         <>
-          <Button onClick={deleteList}>Neu ausrechnen</Button>
+          <Button onClick={deleteList} className="mx-4 p-0">Neu ausrechnen</Button>
           <RentalProviderOverview rentalProvider={ratedRentalProvider} />
         </>
       )}

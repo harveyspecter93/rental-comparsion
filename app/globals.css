@@ -16,6 +16,10 @@
   animation: animateIn 0.3s ease 0.15s both;
 }
 
+.no-scroll {
+  overflow: hidden;
+}
+
 @keyframes animateIn {
   from {
     opacity: 0;

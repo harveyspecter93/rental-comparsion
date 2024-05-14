@@ -35,7 +35,7 @@ describe('sortList', () => {
       { score: 1 },
       { score: 2 },
     ];
-    const result = sortList(list, true);
+    const result = sortList(list);
     expect(result).toEqual([
       { score: 3 },
       { score: 2 },

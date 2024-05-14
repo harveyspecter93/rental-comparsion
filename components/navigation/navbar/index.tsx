@@ -4,7 +4,7 @@ import Button from "@/components/Button";
 
 const Navbar = ({ toggle }: { toggle: () => void }) => {
   return (
-    <header className="w-full h-20 bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 text-white sticky top-0 shadow-lg">
+    <header className="fixed w-full h-20 bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 text-white sticky top-0 left-0 shadow-lg z-50">
       <div className="container mx-auto px-4 h-full">
         <nav className="flex justify-between items-center h-full">
           <Logo />

@@ -12,13 +12,14 @@ const ProviderCard = ({ provider, onClick }: { provider: RatedProvider; onClick:
             </a>
             <header className="flex justify-between p-2 md:p-4">
                 <h1 className="text-lg">{provider.platform}</h1>
+                {provider.score && <span className=" inline-flex px-2 py-1 rounded-lg z-10 bg-indigo-50 text-medium font-medium text-blue-600">
+                        <p>Score: <b>{provider.score}</b></p>
+                    </span>}
             </header>
             <footer className="flex justify-between p-2 md:p-4">
                 {provider.location && <p><i className="fi fi-rr-marker mr-2"></i>{provider.location}</p>}   
                 
-                {provider.score && <span className="absolute bottom-0 right-0 inline-flex mb-2 mr-2 px-2 py-1 rounded-lg z-10 bg-indigo-50 text-medium font-medium text-blue-600">
-                        <p>Score: <b>{provider.score}</b></p>
-                    </span>}
+                
             </footer>
         </article>
     </div>

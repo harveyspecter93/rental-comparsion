@@ -21,6 +21,5 @@ export async function GET(request: Request): Promise<NextResponse> {
         });
     }
 
-    // Return data using NextResponse.json which already conforms to Response
     return NextResponse.json(data);
 }

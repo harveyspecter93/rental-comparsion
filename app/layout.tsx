@@ -15,12 +15,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={GeistSans.className}>
-      <body className="bg-background text-foreground">
-        <main className="min-h-screen flex flex-col items-center">
-          <Navigation />
-          {children}
-        </main>
-      </body>
+       <body className="bg-background text-foreground">
+    <main className="min-h-screen flex flex-col items-center relative">
+      <Navigation />
+      <div className="pt-8 w-full flex-1">
+        {children}
+      </div>
+    </main>
+  </body>
     </html>
   )
 }

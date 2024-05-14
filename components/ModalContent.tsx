@@ -1,20 +1,12 @@
 import { RatedProvider } from "@/interfaces/types";
-import Button from "./Button";
 
 interface ModalContentProps {
-    selectedProvider: RatedProvider,
-    onClose: () => void
+    selectedProvider: RatedProvider
 }
 
-const ModalContent: React.FC<ModalContentProps> = ({ selectedProvider, onClose }: { selectedProvider: RatedProvider; onClose: () => void }) => (
-    <div className="flex flex-col w-full p-6 bg-white rounded-lg shadow-lg">
-        <header className="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
-            <h3 className="text-3xl font-semibold">
-                Informationen
-            </h3>
-        </header>
-
-        <div className="relative p-4 mx-auto w-full shadow rounded-lg bg-white">
+const ModalContent: React.FC<ModalContentProps> = ({ selectedProvider }: { selectedProvider: RatedProvider; }) => (
+        
+        <div>
             <div className="flex justify-center relative rounded-lg overflow-hidden h-52">
                 <img className="h-auto w-full object-contain p-5"
                     src={selectedProvider.imageUrl || 'path_to_default_image.jpg'}
@@ -49,12 +41,7 @@ const ModalContent: React.FC<ModalContentProps> = ({ selectedProvider, onClose }
                     </a>                    
                 </p>
             </div>
-            
-            <footer className="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
-                <Button onClick={onClose}>Schliessen</Button>
-            </footer>
         </div>
-    </div>
 );
 
 
