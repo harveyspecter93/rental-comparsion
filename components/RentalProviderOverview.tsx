@@ -36,7 +36,7 @@ const RentalProviderOverview: React.FC<RentalProviderOverviewProps> = ({ rentalP
             </div>
             {selectedProvider && (
         <Modal isVisible={showModal} onClose={() => setShowModal(false)}  title={selectedProvider.platform}>
-            <ModalContent selectedProvider={selectedProvider} onClose={() => {}} />
+            <ModalContent selectedProvider={selectedProvider} />
         </Modal>
       )}
         </div>

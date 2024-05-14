@@ -6,7 +6,6 @@ export async function GET(request: Request): Promise<NextResponse> {
     
     const cookieStore = cookies()
     const supabase = createClient(cookieStore);
-   
     const { data, error } = await supabase
         .from('rentalProvider')
         .select('*');
@@ -20,6 +19,12 @@ export async function GET(request: Request): Promise<NextResponse> {
             }
         });
     }
-
     return NextResponse.json(data);
 }
+
+
+
+
+
+
+

@@ -17,3 +17,6 @@ describe('calculateUtilityAnalysis', () => {
     expect(result[1].score).toBe('7.50');
   });
 });
+
+
+
