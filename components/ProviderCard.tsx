@@ -13,7 +13,7 @@ const ProviderCard = ({ provider, onClick }: { provider: RatedProvider; onClick:
             <header className="flex justify-between p-2 md:p-4">
                 <h1 className="text-lg">{provider.platform}</h1>
                 {provider.score && <span className=" inline-flex px-2 py-1 rounded-lg z-10 bg-indigo-50 text-medium font-medium text-blue-600">
-                        <p>Score: <b>{provider.score}</b></p>
+                        <p>Score: <b>{provider.score}</b>/10</p>
                     </span>}
             </header>
             <footer className="flex justify-between p-2 md:p-4">

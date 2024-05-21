@@ -20,7 +20,7 @@ type Props = {
 type CL = keyof typeof CriteriaLabels;
 
 const initialParams: Criteria[] = (Object.keys(CriteriaLabels) as Array<CL>).map(label => 
-  ({ weight: 0, criteria: label as keyof NumericProperties, label: label as keyof CriteriaLabels })
+  ({ weight: 0, scale: ["discountAvailability", "reviewCount"].includes(label) ? 5 : 10, criteria: label as keyof NumericProperties, label: label as keyof CriteriaLabels })
 );
 
 const UtilityAnalysisInteraction: React.FC<Props> = ({ rentalProvider }) => {

@@ -28,6 +28,11 @@ Die entwickelte Web-Applikation bietet eine nutzerfreundliche und effiziente Mö
 
 ---
 
+## Anwendung ausführen
+
+Die Anwendung wurde auf Vercel deployed und kann somit online ausgeführt werden. 
+Folgender Link führt direkt zur deployten Anwendung: https://rental-comparsion-1.vercel.app/
+
 ## Lokal ausführen
 
 Um die Applikation lokal zu testen zu können, müssen folgende Schritte ausgeführt werden:

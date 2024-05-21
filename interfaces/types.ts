@@ -20,6 +20,7 @@ export interface NumericProperties {
 
 export interface Criteria {
     weight: number,
+    scale: number,
     criteria: keyof NumericProperties; // Using keyof ensures the property keys are checked against NumericProperties0
 }
 
